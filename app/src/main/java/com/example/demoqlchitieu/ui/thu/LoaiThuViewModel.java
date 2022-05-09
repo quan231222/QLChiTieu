@@ -1,7 +1,40 @@
 package com.example.demoqlchitieu.ui.thu;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-public class LoaiThuViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+import com.example.demoqlchitieu.entity.LoaiThu;
+import com.example.demoqlchitieu.repository.LoaiThuRepository;
+
+import java.util.List;
+
+public class LoaiThuViewModel extends AndroidViewModel {
+    private LoaiThuRepository mLoaiThuRepository;
+    private LiveData<List<LoaiThu>> mAllLoaiThu;
+
+    public LoaiThuViewModel(@NonNull Application application) {
+        super(application);
+        mLoaiThuRepository = new LoaiThuRepository(application);
+        mAllLoaiThu = mLoaiThuRepository.getAllLoaiThu();
+    }
+
+    public LiveData<List<LoaiThu>> getmAllLoaiThu() {
+        return mAllLoaiThu;
+    }
+
+    public void insert(LoaiThu loaiThu) {
+        mLoaiThuRepository.insert(loaiThu);
+    }
+
+    public void delete(LoaiThu loaiThu) {
+        mLoaiThuRepository.delete(loaiThu);
+    }
+
+    public void update(LoaiThu loaiThu) {
+        mLoaiThuRepository.update(loaiThu);
+    }
 }

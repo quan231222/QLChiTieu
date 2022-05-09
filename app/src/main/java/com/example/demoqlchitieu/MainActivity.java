@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.demoqlchitieu.dialog.LoaiThuDialog;
+import com.example.demoqlchitieu.ui.thu.LoaiThuFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -18,6 +21,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.demoqlchitieu.databinding.ActivityMainBinding;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,11 +37,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
+
+        final MainActivity currentContext = this;
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                List<Fragment> fragments = getSupportFragmentManager().getFragments();
+                Fragment fragment = fragments.get(fragments.size()-1);
+                if (fragment instanceof LoaiThuFragment) {
+                    LoaiThuDialog dialog = new LoaiThuDialog(currentContext,
+                            (LoaiThuFragment) fragment);
+                    dialog.show();
+                }
             }
         });
         DrawerLayout drawer = binding.drawerLayout;

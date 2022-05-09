@@ -18,7 +18,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase INSTANCE;
     private static RoomDatabase.Callback callback = new Callback() {
         @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
 
             new PopulateData(INSTANCE).execute();

@@ -12,7 +12,7 @@ import com.example.demoqlchitieu.entity.LoaiThu;
 import java.util.List;
 
 @Dao
-public interface LoaiThuDao {
+public interface ThuDao {
     @Query("SELECT * FROM loaithu")
     LiveData<List<LoaiThu>> findAll();
 
