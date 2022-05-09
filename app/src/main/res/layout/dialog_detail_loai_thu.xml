@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:background="#69B8DC"
             android:gravity="center"
-            android:text="Thong Tin Loai Thu"
+            android:text="Thông Tin Loại Thu"
             android:textSize="20dp" />
     </LinearLayout>
 
@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Ma Loai Thu"
+                android:text="Mã Loại Thu"
                 android:textSize="18sp" />
 
             <TextView
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Ten Loai Thu"
+                android:text="Tên Loại Thu"
                 android:textSize="18sp" />
 
             <TextView

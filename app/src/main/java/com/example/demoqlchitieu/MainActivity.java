@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.Menu;
 
 import com.example.demoqlchitieu.dialog.LoaiThuDialog;
+import com.example.demoqlchitieu.dialog.ThuDialog;
+import com.example.demoqlchitieu.ui.thu.KhoanThuFragment;
 import com.example.demoqlchitieu.ui.thu.LoaiThuFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -47,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 if (fragment instanceof LoaiThuFragment) {
                     LoaiThuDialog dialog = new LoaiThuDialog(currentContext,
                             (LoaiThuFragment) fragment);
+                    dialog.show();
+                } else {
+                    ThuDialog dialog = new ThuDialog(currentContext, (KhoanThuFragment) fragment);
                     dialog.show();
                 }
             }

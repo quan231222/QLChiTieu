@@ -8,23 +8,38 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.demoqlchitieu.entity.LoaiThu;
-import com.example.demoqlchitieu.repository.LoaiThuRepository;
+import com.example.demoqlchitieu.entity.Thu;
+import com.example.demoqlchitieu.repository.ThuRepository;
 
 import java.util.List;
 
 public class KhoanThuViewModel extends AndroidViewModel {
-    private LoaiThuRepository mLoaiThuRepository;
+    private ThuRepository mThuRepository;
+    private LoaiThuViewModel mLoaiThuViewModel;
+    private LiveData<List<Thu>> mAllThu;
     private LiveData<List<LoaiThu>> mAllLoaiThu;
+
     public KhoanThuViewModel(@NonNull Application application) {
         super(application);
-        mLoaiThuRepository = new LoaiThuRepository(application);
-        mAllLoaiThu = mLoaiThuRepository.getAllLoaiThu();
+        mThuRepository = new ThuRepository(application);
+        mAllThu = mThuRepository.getAllThu();
+        mLoaiThuViewModel = new LoaiThuViewModel(application);
+        mAllLoaiThu = mLoaiThuViewModel.getmAllLoaiThu();
     }
 
-    public LiveData<List<LoaiThu>> getAllLoaiThu() {
+    public LiveData<List<Thu>> getAllThu() {
+        return mAllThu;
+    }
+    public LiveData<List<LoaiThu>> getmAllLoaiThu() {
         return mAllLoaiThu;
     }
-    public void insert(LoaiThu loaiThu) {
-        mLoaiThuRepository.insert(loaiThu);
+    public void insert(Thu thu) {
+        mThuRepository.insert(thu);
+    }
+    public void delete(Thu thu) {
+        mThuRepository.delete(thu);
+    }
+    public void update(Thu thu) {
+        mThuRepository.update(thu);
     }
 }

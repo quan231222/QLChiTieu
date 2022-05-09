@@ -10,10 +10,12 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.demoqlchitieu.entity.LoaiThu;
+import com.example.demoqlchitieu.entity.Thu;
 
-@Database(entities = {LoaiThu.class}, version = 1)
+@Database(entities = {LoaiThu.class, Thu.class}, version = 3)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract LoaiThuDao loaiThuDao();
+    public abstract ThuDao thuDao();
 
     public static AppDatabase INSTANCE;
     private static RoomDatabase.Callback callback = new Callback() {
@@ -38,20 +40,29 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
     public static class PopulateData extends AsyncTask<Void, Void, Void> {
-    private LoaiThuDao loaiThuDao;
+        private LoaiThuDao loaiThuDao;
+        private ThuDao thuDao;
 
         public PopulateData(AppDatabase db) {
             loaiThuDao = db.loaiThuDao();
+            thuDao = db.thuDao();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            String[] loaithus = new String[]{"Luong", "Thuong", "Ve Xo"};
+            String[] loaithus = new String[]{"Lương", "Thưởng", "Vé Xố"};
             for (String it: loaithus) {
                 LoaiThu lt = new LoaiThu();
                 lt.ten = it;
                 loaiThuDao.insert(lt);
             }
+                Thu thu = new Thu();
+                thu.ten = "Luong thang 1";
+                thu.sotien = 3000;
+                thu.ltid = 2;
+                thu.ghichu = "";
+                thuDao.insert(thu);
+
             return null;
         }
     }

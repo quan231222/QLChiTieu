@@ -11,10 +11,10 @@ public class Thu {
     @ColumnInfo(name = "ltid")
     public int ltid;
     @ColumnInfo(name = "ten")
-    public int ten;
+    public String ten;
     @ColumnInfo(name = "sotien")
-    public int sotien;
+    public float sotien;
     @ColumnInfo(name = "ghichu")
-    public int ghichu;
+    public String ghichu;
 
 }

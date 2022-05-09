@@ -27,9 +27,10 @@ import com.example.demoqlchitieu.entity.LoaiThu;
 import java.util.List;
 
 public class LoaiThuFragment extends Fragment {
+
     private RecyclerView mRv;
-    private LoaiThuRecyclerviewAdapter mAdapter;
     private LoaiThuViewModel mViewModel;
+    private LoaiThuRecyclerviewAdapter mAdapter;
 
     public static LoaiThuFragment newInstance() {
         return new LoaiThuFragment();

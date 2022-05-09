@@ -7,23 +7,23 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.demoqlchitieu.entity.LoaiThu;
+import com.example.demoqlchitieu.entity.Thu;
 
 import java.util.List;
 
 @Dao
 public interface ThuDao {
-    @Query("SELECT * FROM loaithu")
-    LiveData<List<LoaiThu>> findAll();
+    @Query("SELECT * FROM thu")
+    LiveData<List<Thu>> findAll();
 
     @Insert
-    void insert(LoaiThu loaiThu);
+    void insert(Thu thu);
 
     @Update
-    void update(LoaiThu loaiThu);
+    void update(Thu thu);
 
     @Delete
-    void delete(LoaiThu loaiThu);
+    void delete(Thu thu);
 
 
 }
